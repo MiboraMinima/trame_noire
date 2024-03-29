@@ -1,0 +1,5 @@
+/* Not the entire height because it's more convenient for devtool */
+#map {
+  width: 100%;
+  height: 500px; 
+}
