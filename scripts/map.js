@@ -5,9 +5,13 @@ const map = new maplibregl.Map({
   container: 'map',
   style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
   center: [-2.71131, 47.70301],
-  zoom: 12,
+  zoom: 12.5,
   scrollZoom: true,
   minZoom: 9,
+  maxBounds: [
+    [-2.85, 47.65], // W-S coordinates
+    [-2.62, 47.77] // E-N coordinates
+  ]
 });
 
 /* ========================================================================== */
