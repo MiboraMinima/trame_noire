@@ -37,6 +37,25 @@ map.on('load', () => {
     'minZoom': 10,
     'maxZoom': 13
   });
+
+  // add avex tilset
+  // TODO: add source
+  map.addLayer({
+    "id": "avex",
+    "type": "raster",
+    "source": {
+      'type': 'raster',
+      'scheme': "tms",
+      'tiles': [
+        'http://www.antoineld.fr/avex/avex_tiles/{z}/{x}/{y}.png'
+      ],
+      'tileSize': 256,
+      'attribution': 'Ajouter la source...'
+    },
+    "paint": { 'raster-opacity': 0.5 },
+    'minZoom': 10,
+    'maxZoom': 14
+  });
 });
 
 /* ========================================================================== */
