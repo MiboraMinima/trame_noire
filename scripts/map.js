@@ -24,7 +24,7 @@ map.on('load', () => {
   // add communes
   map.addLayer({
     "id": "comLigne",
-    "type": "line",  // fill, circle
+    "type": "line",
     "source": {
       'type': 'geojson',
       "data": com,
@@ -34,8 +34,8 @@ map.on('load', () => {
       "line-color": "Black",
       "line-width": 1,
     },
-    'minZoom': 9,
-    'maxZoom': 15
+    'minZoom': 10,
+    'maxZoom': 13
   });
 });
 
