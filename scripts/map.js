@@ -1,18 +1,28 @@
 /* ========================================================================== */
 /* Instantiate map                                                            */
 /* ========================================================================== */
-const map = new maplibregl.Map({
+// AccesToken de Antoine_S
+mapboxgl.accessToken = 'pk.eyJ1IjoiYW50b2luZTIzMDgiLCJhIjoiY2xza2RzcjdkMDI5OTJpbjJjM3ZxNms4dSJ9.4aUmIGBpfmffjyo55jozIg';
+
+// Mise en place du fond de carte jour 
+const map = new mapboxgl.Map({
   container: 'map',
-  style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
+  style: 'mapbox://styles/antoine2308/clugqndnn00k201r5ep748gxl',
   center: [-2.71131, 47.70301],
   zoom: 12.5,
   scrollZoom: true,
+  customAttribution : '<a href= "https://esigat.wordpress.com/" target="_blank"> Master SIGAT</a>',
   minZoom: 9,
   maxBounds: [
     [-2.85, 47.65], // W-S coordinates
     [-2.62, 47.77] // E-N coordinates
   ]
 });
+
+// Ajout Echelle cartographique
+map.addControl(new mapboxgl.ScaleControl({
+  maxWidth: 120,  
+  unit: 'metric'}));
 
 /* ========================================================================== */
 /* Load data                                                                  */
