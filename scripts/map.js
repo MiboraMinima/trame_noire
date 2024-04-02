@@ -56,6 +56,35 @@ map.on('load', () => {
     'minZoom': 10,
     'maxZoom': 14
   });
+
+  // Add trame noire
+  map.addLayer({
+    "id": "trameNoire",
+    "type": "fill",
+    "source": {
+      'type': 'geojson',
+      "data": 'http://www.antoineld.fr/trame_noire/trame_noire_audit_4326.geojson',
+      'attribution': 'Ajouter la source...'
+    },
+    "layout": {'visibility': 'visible'},
+    "paint": {
+      'fill-color': [
+        'match',
+        // get the property
+        ['get', 'layer'],
+        // if 'GP' then yellow
+        'type1', 'yellow',
+        // if 'XX' then black 
+        'type2', 'Blue',
+        // else
+        'Red',
+      ],                     // white otherwise
+      'fill-outline-color': 'white',
+      'fill-opacity': 0.5
+    },
+    'minZoom': 10,
+    'maxZoom': 14
+  });
 });
 
 /* ========================================================================== */
@@ -66,12 +95,12 @@ map.on('load', () => {
 // From MapBox doc
 map.on('idle', () => {
   // If these two layers were not added to the map, abort
-  if (!map.getLayer('comLigne') || !map.getLayer('avex')) {
+  if (!map.getLayer('comLigne') || !map.getLayer('avex') || !map.getLayer('trameNoire')) {
     return;
   }
 
   // Enumerate ids of the layers.
-  const toggleableLayerIds = ['comLigne', 'avex'];
+  const toggleableLayerIds = ['comLigne', 'avex', 'trameNoire'];
 
   // Set up the corresponding toggle button for each layer.
   for (const id of toggleableLayerIds) {
