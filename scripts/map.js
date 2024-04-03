@@ -27,8 +27,12 @@ map.addControl(new mapboxgl.ScaleControl({
 /* ========================================================================== */
 /* Load data                                                                  */
 /* ========================================================================== */
-// communes de l'EPCI du Golfe du morbihan
-const com = "https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/georef-france-commune/exports/geojson?lang=en&refine=epci_name%3A%22CA%20Golfe%20du%20Morbihan%20-%20Vannes%20Agglom%C3%A9ration%22&facet=facet(name%3D%22epci_name%22%2C%20disjunctive%3Dtrue)&timezone=Europe%2FBerlin"
+// Data urls
+const u_com = "https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/georef-france-commune/exports/geojson?lang=en&refine=epci_name%3A%22CA%20Golfe%20du%20Morbihan%20-%20Vannes%20Agglom%C3%A9ration%22&facet=facet(name%3D%22epci_name%22%2C%20disjunctive%3Dtrue)&timezone=Europe%2FBerlin"
+const u_znieff = "https://data.geopf.fr/wfs/ows?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAME=PROTECTEDAREAS.ZNIEFF1:znieff1&cql_filter=id_mnhn%20IN%20(%27530002621%27,%27530030148%27)&outputFormat=application/json&srsName=epsg:4326"
+const u_pnr = "https://data.geopf.fr/wfs/ows?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAME=PROTECTEDAREAS.PNR:pnr&cql_filter=id_mnhn=%27FR8000051%27&outputFormat=application/json&srsName=epsg:4326"
+const u_avex = "http://www.antoineld.fr/avex/avex_tiles/{z}/{x}/{y}.png"
+const u_trame = 'http://www.antoineld.fr/trame_noire/trame_noire_audit_4326.geojson'
 
 map.on('load', () => {
   // add communes
@@ -37,7 +41,7 @@ map.on('load', () => {
     "type": "line",
     "source": {
       'type': 'geojson',
-      "data": com,
+      "data": u_com,
     },
     "layout": {'visibility': 'visible'},
     "paint": {
@@ -56,9 +60,7 @@ map.on('load', () => {
     "source": {
       'type': 'raster',
       'scheme': "tms",
-      'tiles': [
-        'http://www.antoineld.fr/avex/avex_tiles/{z}/{x}/{y}.png'
-      ],
+      'tiles': [u_avex],
       'tileSize': 256,
       'attribution': 'Ajouter la source...'
     },
@@ -68,12 +70,13 @@ map.on('load', () => {
   });
 
   // Add trame noire
+  // TODO: add source
   map.addLayer({
     "id": "trameNoire",
     "type": "fill",
     "source": {
       'type': 'geojson',
-      "data": 'http://www.antoineld.fr/trame_noire/trame_noire_audit_4326.geojson',
+      "data": u_trame,
       'attribution': 'Ajouter la source...'
     },
     "layout": {'visibility': 'visible'},
@@ -88,8 +91,44 @@ map.on('load', () => {
         'type2', 'Blue',
         // else
         'Red',
-      ],                     // white otherwise
+      ],
       'fill-outline-color': 'white',
+      'fill-opacity': 0.5
+    },
+    'minZoom': 10,
+    'maxZoom': 14
+  });
+
+  // add znieff I
+  // TODO: add source
+  map.addLayer({
+    "id": "znieff",
+    "type": "fill",
+    "source": {
+      'type': 'geojson',
+      "data": u_znieff,
+    },
+    "layout": {'visibility': 'visible'},
+    "paint": {
+      'fill-color': "Red",
+      'fill-opacity': 1
+    },
+    'minZoom': 10,
+    'maxZoom': 14
+  });
+
+  // add PNR
+  // TODO: add source
+  map.addLayer({
+    "id": "pnr",
+    "type": "fill",
+    "source": {
+      'type': 'geojson',
+      "data": u_pnr,
+    },
+    "layout": {'visibility': 'visible'},
+    "paint": {
+      'fill-color': "Green",
       'fill-opacity': 0.5
     },
     'minZoom': 10,
@@ -105,12 +144,18 @@ map.on('load', () => {
 // From MapBox doc
 map.on('idle', () => {
   // If these two layers were not added to the map, abort
-  if (!map.getLayer('comLigne') || !map.getLayer('avex') || !map.getLayer('trameNoire')) {
+  if ( !map.getLayer('comLigne') || !map.getLayer('avex') || !map.getLayer('trameNoire') || !map.getLayer('pnr') || !map.getLayer('znieff') ) {
     return;
   }
 
   // Enumerate ids of the layers.
-  const toggleableLayerIds = ['comLigne', 'avex', 'trameNoire'];
+  const toggleableLayerIds = [
+    'comLigne',
+    'avex',
+    'trameNoire',
+    'znieff', 
+    'pnr'
+  ];
 
   // Set up the corresponding toggle button for each layer.
   for (const id of toggleableLayerIds) {
