@@ -134,12 +134,18 @@ map.on('load', () => {
 // From MapBox doc
 map.on('idle', () => {
   // If these two layers were not added to the map, abort
-  if (!map.getLayer('comLigne') || !map.getLayer('avex') || !map.getLayer('trameNoire')) {
+  if ( !map.getLayer('comLigne') || !map.getLayer('avex') || !map.getLayer('trameNoire') || !map.getLayer('pnr') || !map.getLayer('znieff') ) {
     return;
   }
 
   // Enumerate ids of the layers.
-  const toggleableLayerIds = ['comLigne', 'avex', 'trameNoire'];
+  const toggleableLayerIds = [
+    'comLigne',
+    'avex',
+    'trameNoire',
+    'znieff', 
+    'pnr'
+  ];
 
   // Set up the corresponding toggle button for each layer.
   for (const id of toggleableLayerIds) {
