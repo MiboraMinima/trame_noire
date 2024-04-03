@@ -19,6 +19,7 @@ const map = new maplibregl.Map({
 /* ========================================================================== */
 // communes de l'EPCI du Golfe du morbihan
 const com = "https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/georef-france-commune/exports/geojson?lang=en&refine=epci_name%3A%22CA%20Golfe%20du%20Morbihan%20-%20Vannes%20Agglom%C3%A9ration%22&facet=facet(name%3D%22epci_name%22%2C%20disjunctive%3Dtrue)&timezone=Europe%2FBerlin"
+const u_znieff = "https://data.geopf.fr/wfs/ows?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAME=PROTECTEDAREAS.ZNIEFF1:znieff1&cql_filter=id_mnhn%20IN%20(%27530002621%27,%27530030148%27)&outputFormat=application/json&srsName=epsg:4326"
 
 map.on('load', () => {
   // add communes
@@ -81,6 +82,24 @@ map.on('load', () => {
       ],                     // white otherwise
       'fill-outline-color': 'white',
       'fill-opacity': 0.5
+    },
+    'minZoom': 10,
+    'maxZoom': 14
+  });
+
+  // add znieff I
+  // TODO: add source
+  map.addLayer({
+    "id": "znieff",
+    "type": "fill",
+    "source": {
+      'type': 'geojson',
+      "data": u_znieff,
+    },
+    "layout": {'visibility': 'visible'},
+    "paint": {
+      'fill-color': "Red",
+      'fill-opacity': 1
     },
     'minZoom': 10,
     'maxZoom': 14
