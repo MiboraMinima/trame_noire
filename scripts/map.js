@@ -139,6 +139,44 @@ map.on('load', () => {
     'maxZoom': 14
   });
 
+  map.on('click', 'pts', (e) => {
+    // Retrieve data
+    var ptObs       = e.features[0].properties.pts_obs;
+    var whatDoWeSee = e.features[0].properties.what_do_we_see;
+    var explain     = e.features[0].properties.explain;
+    var howToAct    = e.features[0].properties.how_to_act;
+    var doYouKnow   = e.features[0].properties.do_u_know;
+
+    var dictId = {
+      "pt-obs": ptObs,
+      "what-do-we-see": whatDoWeSee,
+      "explain": explain,
+      "how-to-act": howToAct,
+      "do-you-know": doYouKnow,
+    };
+
+    // Convert to list if any
+    for (let key in dictId) {
+      dictId[key] = toList(dictId[key])
+    }
+
+    // for each var set html
+    $("#info-main").hide();
+    for (let key in dictId) {
+      $("#" + key).html(dictId[key]);
+    }
+    $("#infos-pts").css("display", "flex");
+  });
+
+  // Change the cursor to a pointer when the mouse is over the places layer.
+  map.on('mouseenter', 'pts', () => {
+    map.getCanvas().style.cursor = 'pointer';
+  });
+
+  // Change it back to a pointer when it leaves.
+  map.on('mouseleave', 'pts', () => {
+    map.getCanvas().style.cursor = '';
+  });
 });
 
 /* ========================================================================== */
