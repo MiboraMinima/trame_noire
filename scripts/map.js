@@ -23,6 +23,7 @@ const u_znieff = "https://data.geopf.fr/wfs/ows?SERVICE=WFS&VERSION=2.0.0&REQUES
 const u_pnr = "https://data.geopf.fr/wfs/ows?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAME=PROTECTEDAREAS.PNR:pnr&cql_filter=id_mnhn=%27FR8000051%27&outputFormat=application/json&srsName=epsg:4326"
 const u_avex = "http://www.antoineld.fr/avex/avex_tiles/{z}/{x}/{y}.png"
 const u_trame = 'http://www.antoineld.fr/trame_noire/trame_noire_audit_4326.geojson'
+const pts_obs = 'http://antoineld.fr/popup/arret_voir_v2.geojson'
 
 map.on('load', () => {
   // add communes
