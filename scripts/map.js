@@ -125,6 +125,20 @@ map.on('load', () => {
     'minZoom': 10,
     'maxZoom': 14
   });
+
+  // add points
+  map.addLayer({
+    "id": "pts",
+    "type": "circle",
+    "source": {
+      'type': 'geojson',
+      "data": pts_obs,
+    },
+    "layout": {'visibility': 'visible'},
+    'minZoom': 10,
+    'maxZoom': 14
+  });
+
 });
 
 /* ========================================================================== */
