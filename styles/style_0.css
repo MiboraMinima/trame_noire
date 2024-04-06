@@ -105,6 +105,7 @@ button:hover {
 }
 
 #infos-pts {
+  display: none;
   height: inherit;
   flex-direction: column;
   justify-content: space-between;
@@ -112,10 +113,6 @@ button:hover {
 
 #info-main p {
   margin-top: 3%;
-}
-
-#infos-pts {
-  display:none;
 }
 
 #infos-pts p {
