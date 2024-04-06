@@ -187,7 +187,7 @@ map.on('load', () => {
 // From MapBox doc
 map.on('idle', () => {
   // If these two layers were not added to the map, abort
-  if ( !map.getLayer('comLigne') || !map.getLayer('avex') || !map.getLayer('trameNoire') || !map.getLayer('pnr') || !map.getLayer('znieff') ) {
+  if ( !map.getLayer('comLigne') || !map.getLayer('avex') || !map.getLayer('trameNoire') || !map.getLayer('pnr') || !map.getLayer('znieff') || !map.getLayer('pts') ) {
     return;
   }
 
@@ -197,7 +197,8 @@ map.on('idle', () => {
     'avex',
     'trameNoire',
     'znieff', 
-    'pnr'
+    'pnr',
+    'pts'
   ];
 
   // Set up the corresponding toggle button for each layer.
