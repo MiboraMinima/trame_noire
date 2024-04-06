@@ -33,6 +33,7 @@ const u_znieff = "https://data.geopf.fr/wfs/ows?SERVICE=WFS&VERSION=2.0.0&REQUES
 const u_pnr = "https://data.geopf.fr/wfs/ows?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAME=PROTECTEDAREAS.PNR:pnr&cql_filter=id_mnhn=%27FR8000051%27&outputFormat=application/json&srsName=epsg:4326"
 const u_avex = "http://www.antoineld.fr/avex/avex_tiles/{z}/{x}/{y}.png"
 const u_trame = 'http://www.antoineld.fr/trame_noire/trame_noire_audit_4326.geojson'
+const pts_obs = 'http://antoineld.fr/popup/arret_voir_v2.geojson'
 
 map.on('load', () => {
   // add communes
@@ -134,6 +135,58 @@ map.on('load', () => {
     'minZoom': 10,
     'maxZoom': 14
   });
+
+  // add points
+  map.addLayer({
+    "id": "pts",
+    "type": "circle",
+    "source": {
+      'type': 'geojson',
+      "data": pts_obs,
+    },
+    "layout": {'visibility': 'visible'},
+    'minZoom': 10,
+    'maxZoom': 14
+  });
+
+  map.on('click', 'pts', (e) => {
+    // Retrieve data
+    var ptObs       = e.features[0].properties.pts_obs;
+    var whatDoWeSee = e.features[0].properties.what_do_we_see;
+    var explain     = e.features[0].properties.explain;
+    var howToAct    = e.features[0].properties.how_to_act;
+    var doYouKnow   = e.features[0].properties.do_u_know;
+
+    var dictId = {
+      "pt-obs": ptObs,
+      "what-do-we-see": whatDoWeSee,
+      "explain": explain,
+      "how-to-act": howToAct,
+      "do-you-know": doYouKnow,
+    };
+
+    // Convert to list if any
+    for (let key in dictId) {
+      dictId[key] = toList(dictId[key])
+    }
+
+    // for each var set html
+    $("#info-main").hide();
+    for (let key in dictId) {
+      $("#" + key).html(dictId[key]);
+    }
+    $("#infos-pts").css("display", "flex");
+  });
+
+  // Change the cursor to a pointer when the mouse is over the places layer.
+  map.on('mouseenter', 'pts', () => {
+    map.getCanvas().style.cursor = 'pointer';
+  });
+
+  // Change it back to a pointer when it leaves.
+  map.on('mouseleave', 'pts', () => {
+    map.getCanvas().style.cursor = '';
+  });
 });
 
 /* ========================================================================== */
@@ -144,7 +197,7 @@ map.on('load', () => {
 // From MapBox doc
 map.on('idle', () => {
   // If these two layers were not added to the map, abort
-  if ( !map.getLayer('comLigne') || !map.getLayer('avex') || !map.getLayer('trameNoire') || !map.getLayer('pnr') || !map.getLayer('znieff') ) {
+  if ( !map.getLayer('comLigne') || !map.getLayer('avex') || !map.getLayer('trameNoire') || !map.getLayer('pnr') || !map.getLayer('znieff') || !map.getLayer('pts') ) {
     return;
   }
 
@@ -154,7 +207,8 @@ map.on('idle', () => {
     'avex',
     'trameNoire',
     'znieff', 
-    'pnr'
+    'pnr',
+    'pts'
   ];
 
   // Set up the corresponding toggle button for each layer.
