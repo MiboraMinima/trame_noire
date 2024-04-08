@@ -33,9 +33,9 @@ map.addControl(new mapboxgl.ScaleControl({
 const u_com = "https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/georef-france-commune/exports/geojson?lang=en&refine=epci_name%3A%22CA%20Golfe%20du%20Morbihan%20-%20Vannes%20Agglom%C3%A9ration%22&facet=facet(name%3D%22epci_name%22%2C%20disjunctive%3Dtrue)&timezone=Europe%2FBerlin"
 const u_znieff = "https://data.geopf.fr/wfs/ows?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAME=PROTECTEDAREAS.ZNIEFF1:znieff1&cql_filter=id_mnhn%20IN%20(%27530002621%27,%27530030148%27)&outputFormat=application/json&srsName=epsg:4326"
 const u_pnr = "https://data.geopf.fr/wfs/ows?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAME=PROTECTEDAREAS.PNR:pnr&cql_filter=id_mnhn=%27FR8000051%27&outputFormat=application/json&srsName=epsg:4326"
-const u_avex = "http://www.antoineld.fr/avex/avex_tiles/{z}/{x}/{y}.png"
-const u_trame = 'http://www.antoineld.fr/trame_noire/trame_noire_audit_4326.geojson'
-const pts_obs = 'http://antoineld.fr/popup/arret_voir_v2.geojson'
+const u_avex = "https://www.antoineld.fr/avex/avex_tiles/{z}/{x}/{y}.png"
+const u_trame = 'https://www.antoineld.fr/trame_noire/trame_noire_audit_4326.geojson'
+const pts_obs = 'https://antoineld.fr/popup/arret_voir_v2.geojson'
 
 map.on('load', () => {
   // add communes
