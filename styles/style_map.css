@@ -1,10 +1,11 @@
 #map {
-  width: 75%;
+  width: 65%;
   height: 100%; 
+  z-index: 0;
 }
 
-#menu {
-  background: #fff;
+/* #menu {
+  background: #4e4c4c;
   position: absolute;
   z-index: 1;
   top: 10px;
@@ -17,7 +18,7 @@
 
 #menu a {
   font-size: 13px;
-  color: #404040;
+  color: #ffffff;
   display: block;
   margin: 0;
   padding: 0;
@@ -32,15 +33,54 @@
 }
 
 #menu a:hover {
-  background-color: #f8f8f8;
-  color: #404040;
+  background-color: #444040;
+  color: #ffffff;
 }
 
 #menu a.active {
-  background-color: #3887be;
+  background-color: #1a171c;
   color: #ffffff;
 }
 
 #menu a.active:hover {
-  background: #3074a4;
+  background: #ba051b;
+} */
+/* Style pour déterminer le menu*/
+
+.menu {
+  font: 8px/16px 'Lato', Arial, Helvetica, sans-serif;
+  position: absolute;
+  width: 150px;
+  top: 40px;
+  right: 3px;
+  z-index: 1;
+  padding: 10px;
 }
+
+.menu .menu_overlay {
+  background-color: rgb(30, 28, 28);
+  opacity : 0.9;
+  box-shadow:0 1px 2px rgba(0, 0, 0, 0.50);
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 0px;
+}
+
+.menu_overlay fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 0px;
+}
+
+.menu_overlay .categoryLabel {
+  display: block;
+  font-weight: bold;
+  margin: 0 0 0px;
+}
+
+.menu label {
+  display: block; /* Afficher chaque entité de la légende sur une ligne différente */
+  margin-bottom: 5px; /* Ajouter un espacement entre chaque entité de la légende */
+  color: white;
+}
+
