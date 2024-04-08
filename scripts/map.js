@@ -8,10 +8,10 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYW50b2luZTIzMDgiLCJhIjoiY2xza2RzcjdkMDI5OTJpb
 const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/antoine2308/clugqndnn00k201r5ep748gxl',
-  center: [-2.71131, 47.70301],
-  zoom: 12.5,
+  center: [-2.742331, 47.699998],
+  zoom: 11.7,
   scrollZoom: true,
-  customAttribution : '<a href= "https://esigat.wordpress.com/" target="_blank"> Master SIGAT</a>',
+  customAttribution: '<a href="https://esigat.wordpress.com/" target="_blank"> Master SIGAT</a>',
   minZoom: 9,
   maxBounds: [
     [-2.85, 47.65], // W-S coordinates
@@ -23,6 +23,8 @@ const map = new mapboxgl.Map({
 map.addControl(new mapboxgl.ScaleControl({
   maxWidth: 120,  
   unit: 'metric'}));
+
+
 
 /* ========================================================================== */
 /* Load data                                                                  */
@@ -65,6 +67,7 @@ map.on('load', () => {
       'tileSize': 256,
       'attribution': 'Ajouter la source...'
     },
+    "layout": {'visibility': 'none'},
     "paint": { 'raster-opacity': 0.5 },
     'minZoom': 10,
     'maxZoom': 14
@@ -87,14 +90,14 @@ map.on('load', () => {
         // get the property
         ['get', 'layer'],
         // if 'GP' then yellow
-        'type1', 'yellow',
+        'type1', '#e1b86b',
         // if 'XX' then black 
-        'type2', 'Blue',
+        'type2', '#4f4b44',
         // else
-        'Red',
+        '#7e785c',
       ],
       'fill-outline-color': 'white',
-      'fill-opacity': 0.5
+      'fill-opacity': 0.8
     },
     'minZoom': 10,
     'maxZoom': 14
@@ -109,9 +112,9 @@ map.on('load', () => {
       'type': 'geojson',
       "data": u_znieff,
     },
-    "layout": {'visibility': 'visible'},
+    "layout": {'visibility': 'none'},
     "paint": {
-      'fill-color': "Red",
+      'fill-color': "#14b485",
       'fill-opacity': 1
     },
     'minZoom': 10,
@@ -127,9 +130,9 @@ map.on('load', () => {
       'type': 'geojson',
       "data": u_pnr,
     },
-    "layout": {'visibility': 'visible'},
+    "layout": {'visibility': 'none'},
     "paint": {
-      'fill-color': "Green",
+      'fill-color': "#f37043",
       'fill-opacity': 0.5
     },
     'minZoom': 10,
@@ -140,13 +143,21 @@ map.on('load', () => {
   map.addLayer({
     "id": "pts",
     "type": "circle",
+    "width": "3px",
     "source": {
       'type': 'geojson',
       "data": pts_obs,
     },
+    "paint": {
+      "circle-color": "green",
+      "circle-radius": 6,
+      "circle-stroke-color": "#fff",
+      "circle-stroke-width": 1
+    },
     "layout": {'visibility': 'visible'},
     'minZoom': 10,
     'maxZoom': 14
+    
   });
 
   map.on('click', 'pts', (e) => {
@@ -195,70 +206,113 @@ map.on('load', () => {
 
 // After the last frame rendered before the map enters an "idle" state.
 // From MapBox doc
-map.on('idle', () => {
-  // If these two layers were not added to the map, abort
-  if ( !map.getLayer('comLigne') || !map.getLayer('avex') || !map.getLayer('trameNoire') || !map.getLayer('pnr') || !map.getLayer('znieff') || !map.getLayer('pts') ) {
-    return;
-  }
+// map.on('idle', () => {
+//   // If these two layers were not added to the map, abort
+//   if ( !map.getLayer('comLigne') || !map.getLayer('avex') || !map.getLayer('trameNoire') || !map.getLayer('pnr') || !map.getLayer('znieff') || !map.getLayer('pts') ) {
+//     return;
+//   }
 
-  // Enumerate ids of the layers.
-  const toggleableLayerIds = [
-    'comLigne',
-    'avex',
-    'trameNoire',
-    'znieff', 
-    'pnr',
-    'pts'
-  ];
+//   // Enumerate ids of the layers.
+//   const toggleableLayerIds = [
+//     'comLigne',
+//     'avex',
+//     'trameNoire',
+//     'znieff', 
+//     'pnr',
+//     'pts'
+//   ];
 
-  // Set up the corresponding toggle button for each layer.
-  for (const id of toggleableLayerIds) {
-    // Skip layers that already have a button set up.
-    if (document.getElementById(id)) {
-      continue;
+//   // Set up the corresponding toggle button for each layer.
+//   for (const id of toggleableLayerIds) {
+//     // Skip layers that already have a button set up.
+//     if (document.getElementById(id)) {
+//       continue;
+//     }
+
+//     // Create a link.
+//     const link = document.createElement('a');
+//     link.id = id;
+//     link.href = '#';
+//     link.textContent = id;
+//     link.className = 'active';
+
+//     // Show or hide layer when the toggle is clicked.
+//     link.onclick = function (e) {
+//       const clickedLayer = this.textContent;
+//       e.preventDefault();
+//       e.stopPropagation();
+
+//       const visibility = map.getLayoutProperty(
+//         clickedLayer,
+//         'visibility'
+//       );
+
+//       // Toggle layer visibility by changing the layout object's visibility property.
+//       if (visibility === 'visible') {
+//         map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+//         this.className = '';
+//       } else {
+//         this.className = 'active';
+//         map.setLayoutProperty(
+//           clickedLayer,
+//           'visibility',
+//           'visible'
+//         );
+//       }
+//     };
+
+//     const layers = document.getElementById('menu');
+//     layers.appendChild(link);
+//   }
+// });
+
+// Écouteurs d'événements pour les cases à cocher
+document.querySelectorAll('.menu_overlay input[type="checkbox"]').forEach(checkbox => {
+  checkbox.addEventListener('change', function () {
+    const layerId = this.id;
+    if (this.checked) {
+      map.setLayoutProperty(layerId, 'visibility', 'visible');
+    } else {
+      map.setLayoutProperty(layerId, 'visibility', 'none');
     }
-
-    // Create a link.
-    const link = document.createElement('a');
-    link.id = id;
-    link.href = '#';
-    link.textContent = id;
-    link.className = 'active';
-
-    // Show or hide layer when the toggle is clicked.
-    link.onclick = function (e) {
-      const clickedLayer = this.textContent;
-      e.preventDefault();
-      e.stopPropagation();
-
-      const visibility = map.getLayoutProperty(
-        clickedLayer,
-        'visibility'
-      );
-
-      // Toggle layer visibility by changing the layout object's visibility property.
-      if (visibility === 'visible') {
-        map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-        this.className = '';
-      } else {
-        this.className = 'active';
-        map.setLayoutProperty(
-          clickedLayer,
-          'visibility',
-          'visible'
-        );
-      }
-    };
-
-    const layers = document.getElementById('menu');
-    layers.appendChild(link);
-  }
+  });
 });
-
 /* ========================================================================== */
 /* Markers                                                                    */
 /* ========================================================================== */
 
+
+
 /* ========================================================================== */
 /* Popup                                                                      */
 /* ========================================================================== */
+// Configuration onglets géographiques 
+
+document.getElementById('vuegloable').addEventListener('click', function () 
+{ map.flyTo({zoom: 12,
+           center: [-2.742331, 47.699998 ],
+	          pitch: 0,
+            bearing:0 });
+});
+
+document.getElementById('bois').addEventListener('click', function () 
+{ map.flyTo({zoom: 16,
+           center: [-2.751221, 47.694752 ],
+	          pitch: 20,
+            bearing: 0 });
+});
+
+
+document.getElementById('etangs').addEventListener('click', function () 
+{ map.flyTo({zoom: 16,
+           center: [-2.746786, 47.692948],
+	          pitch: 20,
+            bearing: 360 });
+});
+
+document.getElementById('ciel').addEventListener('click', function () 
+{ map.flyTo({zoom: 16,
+           center: [-2.736941, 47.690422 ],
+	          pitch: 20,
+            bearing: 0 });
+});

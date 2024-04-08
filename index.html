@@ -17,26 +17,25 @@
 
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <!-- boostrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> 
+
+    
   </head>
 
+  
   <body>
     <div style="width:100%;height:100%;display:flex">
       <nav id="menu"></nav>
       <div id="right-panel">
         <div id="info-main">
-          <h2>Un titre qui doit être définit par les AUDIT</h2>
-          <p>
-            Lorem ipsum dolor sit amet, officia excepteur ex fugiat
-            reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit
-            ex esse exercitation amet. Nisi anim cupidatat excepteur officia.
-            Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate
-            voluptate dolor minim nulla est proident. Nostrud officia pariatur
-            ut officia. Sit irure elit esse ea nulla sunt ex occaecat
-            reprehenderit commodo officia dolor Lorem duis laboris cupidatat
-            officia voluptate. Culpa proident adipisicing id nulla nisi laboris
-            ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo
-            ex non excepteur duis sunt velit enim. Voluptate laboris sint
-            cupidatat ullamco ut ea consectetur et est culpa et culpa duis.
+          <h2>Objectif trame noire et sobriété lumineuse</h2>
+          <p style="text-align: justify;"></pstyle>>
+             Cette carte a pour but de sensibiliser tout à chacun sur l’impact de la pollution lumineuse sur la biodiversité, les écosystèmes et la santé humaine. Elle présente également l’objectif « trame noire » qui sera intégrée dans le PLUi lors de sa révision. 
+Mais c’est quoi la trame noire ? C’est un ensemble de couloirs naturels - les corridors écologiques - pour différents milieux (aquatiques et terrestres) caractérisés par la biodiversité nocturne et une certaine obscurité. Ils nécessitent une protection particulière face aux différents éclairages, publics et privés, afin de protéger l'ensemble des espèces qui s'y trouvent.
+Ainsi, les trames noires constituent des milieux où chacun d'entre nous doit veiller à éteindre ses lumières ou à les allumer seulement en cas de nécessité. Un véritable enjeu s’affirme : le cycle jour/nuit naturel.
           </p>
         </div>
 
@@ -44,22 +43,75 @@
           <div>
             <h2 id="pt-obs"></h3>
             <h3>Qu'observons nous ?</h3>
-            <p id="what-do-we-see"></p>
+            <p style="text-align: justify;", id="what-do-we-see"></p>
             <h3>Explications</h3>
-            <p id="explain"></p>    
+            <p style="text-align: justify;", id="explain"></p>    
             <h3>Comment agir ?</h3>
-            <p id="how-to-act"></p>   
+            <p style="text-align: justify;", id="how-to-act"></p>   
             <h3>Le saviez-vous ?</h3>
-            <p id="do-you-know"></p>
+            <p style="text-align: justify;", id="do-you-know"></p>
           </div>
           <button type="button" onclick="getBack()">RETOUR</button>
         </div>
       </div>
       <div id="map"></div>
-    </div>
 
+      <div class="menu">
+        <div class="menu_overlay">
+          <fieldset>
+            <legend class="categoryLabel">___________</legend>
+            <label class="categoryLabel">Trame noire</label>
+            <label>
+              <input type="checkbox" id="pts" checked>
+              Panneaux
+            </label>  
+            <label>
+              <input type="checkbox" id="avex">
+              Indice de luminosité (AVEX)
+            </label>
+            <!-- Ajout de l'image -->
+            <img src="./data/LegendeAvex2.png" alt="Votre image" width="110" height="190">
+            <label>
+              <input type="checkbox" id="trameNoire" checked>
+              Trame Noire
+            </label>
+            <img src="./data/LegendeTrameNoire.png" alt="Votre image" width="95" height="50">
+            <label class="categoryLabel">Biodiversité</label>
+            <label>
+              <input type="checkbox" id="pnr">
+              Parc Naturel Regional 
+            </label>
+            <label>
+              <input type="checkbox" id="znieff">
+              ZNIEFF
+            </label>
+            <label class="categoryLabel">Administratif</label>
+            <label>
+              <input type="checkbox" id="comLigne" checked>
+              Communes 
+            </label>
+          </fieldset>
+        </div>
+      </div>
+      
+         <!-- ongletsgeo -->
+  <div id='ongletsgeo'>
+  
+    <div class="btn-group-sm" role="group" aria-label="Small button group">
+    
+      <button type="button" id="vuegloable" class="btn btn-primary">Vue Globale</button>
+      <button type="button" id="bois" class="btn btn-dark">Bois de Lesvellec</button>
+      <button type="button" id="etangs" class="btn btn-dark">Les Etangs</button>
+      <button type="button" id="ciel" class="btn btn-dark">Ciel Vannes / Saint-avé</button>
+    </div>
+  </div>
     <!-- load map -->
     <script type="text/javascript" src="scripts/map.js"></script>
     <script type="text/javascript" src="scripts/utils.js"></script>
-  </body>
+
+
+</body>
 </html>
+
+
+
