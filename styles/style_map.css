@@ -84,3 +84,15 @@
   color: white;
 }
 
+/****************/
+/* Contribution */
+/****************/
+
+/* Hide "improve this map" */
+.mapbox-improve-map {
+   display: none;
+}
+
+.mapboxgl-ctrl-attrib a {
+  color: #047fc5;
+}

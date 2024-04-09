@@ -45,6 +45,7 @@ map.on('load', () => {
     "source": {
       'type': 'geojson',
       "data": u_com,
+      'attribution': 'IGN, 2024'
     },
     "layout": {'visibility': 'visible'},
     "paint": {
@@ -65,7 +66,7 @@ map.on('load', () => {
       'scheme': "tms",
       'tiles': [u_avex],
       'tileSize': 256,
-      'attribution': 'Ajouter la source...'
+      'attribution': '<a href="https://www.avex-asso.org/dossiers/wordpress/la-pollution-lumineuse-light-pollution/carte-de-pollution-lumineuse-2023-crise-energetique" target="_blank">Avex, 2023, Carte de pollution lumineuse (crise énergétique)</a>'
     },
     "layout": {'visibility': 'none'},
     "paint": { 'raster-opacity': 0.5 },
@@ -81,7 +82,7 @@ map.on('load', () => {
     "source": {
       'type': 'geojson',
       "data": u_trame,
-      'attribution': 'Ajouter la source...'
+      'attribution': 'Master AUDIT (Rennes 2), 2024'
     },
     "layout": {'visibility': 'visible'},
     "paint": {
@@ -111,6 +112,7 @@ map.on('load', () => {
     "source": {
       'type': 'geojson',
       "data": u_znieff,
+      'attribution': 'INPN, 2024'
     },
     "layout": {'visibility': 'none'},
     "paint": {
@@ -129,6 +131,7 @@ map.on('load', () => {
     "source": {
       'type': 'geojson',
       "data": u_pnr,
+      'attribution': 'INPN, 2024'
     },
     "layout": {'visibility': 'none'},
     "paint": {
@@ -147,6 +150,7 @@ map.on('load', () => {
     "source": {
       'type': 'geojson',
       "data": pts_obs,
+      'attribution': 'Master AUDIT (Rennes 2), 2024'
     },
     "paint": {
       "circle-color": "green",
