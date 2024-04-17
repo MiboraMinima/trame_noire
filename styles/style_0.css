@@ -114,6 +114,13 @@ button:hover {
   
 }
 
+#infos-pts {
+  height: inherit;
+  flex-direction: column;
+  justify-content: space-between;
+  
+} 
+
 #infos-pts p {
   margin-top: 1%;
   font-size: 65%;
@@ -124,13 +131,6 @@ button:hover {
   font-size: 80%;
   font-weight: bold;
 }
-
-#infos-pts {
-  height: inherit;
-  flex-direction: column;
-  justify-content: space-between;
-  
-} 
 
 #infos-pts button {
   margin-top: 1%;
