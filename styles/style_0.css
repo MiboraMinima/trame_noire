@@ -114,6 +114,11 @@ button:hover {
   
 }
 
+#infos-pts p {
+  margin-top: 1%;
+  font-size: 65%;
+}
+
 #infos-pts h3 {
   margin-top: 3%;
   font-size: 80%;
