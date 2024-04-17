@@ -102,17 +102,11 @@ button:hover {
 }
 
 #infos-pts {
-  display: none;
   height: inherit;
   flex-direction: column;
   justify-content: space-between;
   
 } 
-
-#infos-pts .btn {
-  display: block; /* ou display: inline-block; selon vos besoins */
-}
-
 
 #info-main, #infos-pts {
   position:absolute;
