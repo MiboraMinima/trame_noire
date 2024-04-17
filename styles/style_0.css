@@ -101,13 +101,6 @@ button:hover {
   color: white;
 }
 
-#infos-pts {
-  height: inherit;
-  flex-direction: column;
-  justify-content: space-between;
-  
-} 
-
 #info-main, #infos-pts {
   position:absolute;
   width:inherit;
@@ -131,6 +124,13 @@ button:hover {
   font-size: 80%;
   font-weight: bold;
 }
+
+#infos-pts {
+  height: inherit;
+  flex-direction: column;
+  justify-content: space-between;
+  
+} 
 
 #infos-pts button {
   margin-top: 1%;
