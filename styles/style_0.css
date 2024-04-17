@@ -108,14 +108,6 @@ button:hover {
   color: white;
 }
 
-#infos-pts {
-  display: none;
-  height: inherit;
-  flex-direction: column;
-  justify-content: space-between;
-  
-}
-
 #info-main p {
   margin-top: 3%;
   font-size: 90%;
