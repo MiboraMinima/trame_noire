@@ -57,7 +57,6 @@ map.on('load', () => {
   });
 
   // add avex tilset
-  // TODO: add source
   map.addLayer({
     "id": "avex",
     "type": "raster",
@@ -75,7 +74,6 @@ map.on('load', () => {
   });
 
   // Add trame noire
-  // TODO: add source
   map.addLayer({
     "id": "trameNoire",
     "type": "fill",
@@ -105,7 +103,6 @@ map.on('load', () => {
   });
 
   // add znieff I
-  // TODO: add source
   map.addLayer({
     "id": "znieff",
     "type": "fill",
@@ -124,7 +121,6 @@ map.on('load', () => {
   });
 
   // add PNR
-  // TODO: add source
   map.addLayer({
     "id": "pnr",
     "type": "fill",
@@ -165,7 +161,6 @@ map.on('load', () => {
   });
 
   map.on('click', 'pts', (e) => {
-    // Retrieve data
     var ptObs       = e.features[0].properties.pts_obs;
     var whatDoWeSee = e.features[0].properties.what_do_we_see;
     var explain     = e.features[0].properties.explain;
@@ -192,85 +187,45 @@ map.on('load', () => {
     }
     $("#infos-pts").css("display", "flex");
   });
+});
 
-  // Change the cursor to a pointer when the mouse is over the places layer.
-  map.on('mouseenter', 'pts', () => {
-    map.getCanvas().style.cursor = 'pointer';
-  });
+/* ========================================================================== */
+/* Popup                                                                      */
+/* ========================================================================== */
+var popup = new maplibregl.Popup({
+  offset: [0, -7],
+  closeButton: false,
+  closeOnClick: false
+});
 
-  // Change it back to a pointer when it leaves.
-  map.on('mouseleave', 'pts', () => {
-    map.getCanvas().style.cursor = '';
-  });
+map.on('mouseenter', 'pts', function(e) {
+  map.getCanvas().style.cursor = 'pointer';
+
+  var coordinates = e.features[0].geometry.coordinates.slice();
+  var title = e.features[0].properties.pts_obs;
+  var img_path = e.features[0].properties.img_path;
+
+  while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+  }
+
+  // set popup
+  popup
+  .setLngLat(coordinates)
+  .setHTML('<h3>' + title + '</h3><img src="' + img_path + '"><p>Cliquez pour en savoir plus !</p>' )
+  .addTo(map);
+});
+
+map.on('mouseleave', 'pts', function() {
+  map.getCanvas().style.cursor = '';
+  popup.remove();
 });
 
 /* ========================================================================== */
 /* Control Layers
 /* ========================================================================== */
 
-// After the last frame rendered before the map enters an "idle" state.
-// From MapBox doc
-// map.on('idle', () => {
-//   // If these two layers were not added to the map, abort
-//   if ( !map.getLayer('comLigne') || !map.getLayer('avex') || !map.getLayer('trameNoire') || !map.getLayer('pnr') || !map.getLayer('znieff') || !map.getLayer('pts') ) {
-//     return;
-//   }
-
-//   // Enumerate ids of the layers.
-//   const toggleableLayerIds = [
-//     'comLigne',
-//     'avex',
-//     'trameNoire',
-//     'znieff', 
-//     'pnr',
-//     'pts'
-//   ];
-
-//   // Set up the corresponding toggle button for each layer.
-//   for (const id of toggleableLayerIds) {
-//     // Skip layers that already have a button set up.
-//     if (document.getElementById(id)) {
-//       continue;
-//     }
-
-//     // Create a link.
-//     const link = document.createElement('a');
-//     link.id = id;
-//     link.href = '#';
-//     link.textContent = id;
-//     link.className = 'active';
-
-//     // Show or hide layer when the toggle is clicked.
-//     link.onclick = function (e) {
-//       const clickedLayer = this.textContent;
-//       e.preventDefault();
-//       e.stopPropagation();
-
-//       const visibility = map.getLayoutProperty(
-//         clickedLayer,
-//         'visibility'
-//       );
-
-//       // Toggle layer visibility by changing the layout object's visibility property.
-//       if (visibility === 'visible') {
-//         map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-//         this.className = '';
-//       } else {
-//         this.className = 'active';
-//         map.setLayoutProperty(
-//           clickedLayer,
-//           'visibility',
-//           'visible'
-//         );
-//       }
-//     };
-
-//     const layers = document.getElementById('menu');
-//     layers.appendChild(link);
-//   }
-// });
-
-// Écouteurs d'événements pour les cases à cocher
+  // Écouteurs d'événements pour les cases à cocher
 document.querySelectorAll('.menu_overlay input[type="checkbox"]').forEach(checkbox => {
   checkbox.addEventListener('change', function () {
     const layerId = this.id;
@@ -281,42 +236,35 @@ document.querySelectorAll('.menu_overlay input[type="checkbox"]').forEach(checkb
     }
   });
 });
-/* ========================================================================== */
-/* Markers                                                                    */
-/* ========================================================================== */
-
-
 
 /* ========================================================================== */
-/* Popup                                                                      */
+/* Onglet carto
 /* ========================================================================== */
 // Configuration onglets géographiques 
-
 document.getElementById('vuegloable').addEventListener('click', function () 
-{ map.flyTo({zoom: 12,
-           center: [-2.742331, 47.699998 ],
-	          pitch: 0,
-            bearing:0 });
-});
+  { map.flyTo({zoom: 12,
+    center: [-2.742331, 47.699998 ],
+    pitch: 0,
+    bearing:0 });
+  });
 
 document.getElementById('bois').addEventListener('click', function () 
-{ map.flyTo({zoom: 16,
-           center: [-2.751221, 47.694752 ],
-	          pitch: 20,
-            bearing: 0 });
-});
-
+  { map.flyTo({zoom: 16,
+    center: [-2.751221, 47.694752 ],
+    pitch: 20,
+    bearing: 0 });
+  });
 
 document.getElementById('etangs').addEventListener('click', function () 
-{ map.flyTo({zoom: 16,
-           center: [-2.746786, 47.692948],
-	          pitch: 20,
-            bearing: 360 });
-});
+  { map.flyTo({zoom: 16,
+    center: [-2.746786, 47.692948],
+    pitch: 20,
+    bearing: 360 });
+  });
 
 document.getElementById('ciel').addEventListener('click', function () 
-{ map.flyTo({zoom: 16,
-           center: [-2.736941, 47.690422 ],
-	          pitch: 20,
-            bearing: 0 });
-});
+  { map.flyTo({zoom: 16,
+    center: [-2.736941, 47.690422 ],
+    pitch: 20,
+    bearing: 0 });
+  });
