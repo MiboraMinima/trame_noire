@@ -224,14 +224,24 @@ map.on('mouseleave', 'pts', function() {
 /* ========================================================================== */
 /* Control Layers
 /* ========================================================================== */
-  // Écouteurs d'événements pour les cases à cocher
+// Écouteurs d'événements pour les cases à cocher
 document.querySelectorAll('.menu_overlay input[type="checkbox"]').forEach(checkbox => {
   checkbox.addEventListener('change', function () {
     const layerId = this.id;
     if (this.checked) {
       map.setLayoutProperty(layerId, 'visibility', 'visible');
+      if (layerId === 'avex') {
+        $('div#avex-legend').css('display', 'flex') 
+      } else if (layerId === 'trameNoire') {
+        $('select#type').css('display', 'flex') 
+      }
     } else {
       map.setLayoutProperty(layerId, 'visibility', 'none');
+      if (layerId === 'avex') {
+        $('div#avex-legend').css('display', 'none') 
+      } else if (layerId === 'trameNoire') {
+        $('select#type').css('display', 'none') 
+      }
     }
   });
 });
