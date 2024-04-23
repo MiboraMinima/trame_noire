@@ -81,15 +81,30 @@
   text-align: left;
 }
 
+/*********/
+/* popup */
+/*********/
+.maplibregl-popup-anchor-bottom .maplibregl-popup-tip {
+    align-self: center;
+    border-bottom: none;
+    border-top-color: rgb(30, 28, 28);
+}
+.maplibregl-popup-content {
+  background-color: rgb(30, 28, 28);
+  color: white;
+}
+.maplibregl-popup-content h3 {
+  color: #047fc5;
+  font-weight: bold;
+}
+
 /****************/
 /* Contribution */
 /****************/
-
 /* Hide "improve this map" */
 .mapbox-improve-map {
    display: none;
 }
-
 .mapboxgl-ctrl-attrib a {
   color: #047fc5;
 }

@@ -149,7 +149,7 @@ map.on('load', () => {
       'attribution': 'Master AUDIT (Rennes 2), 2024'
     },
     "paint": {
-      "circle-color": "green",
+      "circle-color": "#047fc5",
       "circle-radius": 6,
       "circle-stroke-color": "#fff",
       "circle-stroke-width": 1
