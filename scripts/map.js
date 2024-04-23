@@ -224,7 +224,6 @@ map.on('mouseleave', 'pts', function() {
 /* ========================================================================== */
 /* Control Layers
 /* ========================================================================== */
-
   // Écouteurs d'événements pour les cases à cocher
 document.querySelectorAll('.menu_overlay input[type="checkbox"]').forEach(checkbox => {
   checkbox.addEventListener('change', function () {
@@ -236,6 +235,8 @@ document.querySelectorAll('.menu_overlay input[type="checkbox"]').forEach(checkb
     }
   });
 });
+
+
 
 /* ========================================================================== */
 /* Onglet carto
@@ -268,3 +269,24 @@ document.getElementById('ciel').addEventListener('click', function ()
     pitch: 20,
     bearing: 0 });
   });
+
+
+// =============================================================================
+// Filter
+// =============================================================================
+document.getElementById('type')
+.addEventListener('change', function (e) {
+  var day = e.target.value;
+  // update the map filter
+  if (day === 'all') {
+     FilterType = ['any',
+       ['match', ['get', 'layer'], 'type1', true, false],
+       ['match', ['get', 'layer'], 'type2', true, false],
+       ['match', ['get', 'layer'], 'type3', true, false]
+     ];
+  } else {
+    FilterType = ['match', ['get', 'layer'], day, true, false];
+  }
+  console.log(FilterType);
+  map.setFilter('trameNoire', FilterType);
+});
