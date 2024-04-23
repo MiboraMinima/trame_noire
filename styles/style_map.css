@@ -7,9 +7,9 @@
 /* Style pour déterminer le menu*/
 
 .menu {
-  font: 8px/16px 'Lato', Arial, Helvetica, sans-serif;
+  font: 'Lato', Arial, Helvetica, sans-serif;
   position: absolute;
-  width: 150px;
+  width: 12%;
   bottom: 4%;
   right: 0.75%;
   z-index: 10;
@@ -34,13 +34,39 @@
 .menu_overlay .categoryLabel {
   display: block;
   font-weight: bold;
-  margin: 0 0 0px;
+  margin-bottom: 1%;
+  margin-top: 3%;
+  font-size: 90%;
+  padding: 0;
+  color: white;
 }
 
 .menu label {
-  display: block; /* Afficher chaque entité de la légende sur une ligne différente */
-  margin-bottom: 5px; /* Ajouter un espacement entre chaque entité de la légende */
+  display: block;
   color: white;
+  font-size: 70%;
+  padding-left: 5%;
+}
+
+.menu div {
+  display: flex;
+  margin-bottom: 0;
+}
+
+.menu hr {
+  color:white;
+  opacity: 1;
+  margin-bottom: 5%;
+  margin-top: 0;
+}
+
+.menu select {
+  font-size: 60%;
+  width: 100%;
+  margin: 4% 0 4% 0; 
+}
+.menu select option {
+  text-align: left;
 }
 
 /****************/

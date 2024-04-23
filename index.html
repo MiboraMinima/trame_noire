@@ -84,46 +84,68 @@
         <div class="menu">
           <div class="menu_overlay">
             <fieldset>
-              <legend class="categoryLabel">___________</legend>
-              <label class="categoryLabel">Trame noire</label>
-              <label>
+              <div class="categoryLabel">
+                <p>Trame noire</p>
+              </div>
+              <hr/>
+
+              <div>
                 <input type="checkbox" id="pts" checked>
-                Panneaux
-              </label>  
-              <label>
+                <label for='pts'>Panneaux</label>  
+              </div>
+
+              <div>
                 <input type="checkbox" id="avex">
-                Indice de luminosité (AVEX)
-              </label>
-              <!-- Ajout de l'image -->
+                <label for='avex'>Indice de luminosité (AVEX)</label>
+              </div>
+
               <img src="./data/LegendeAvex2.png" alt="Votre image" width="110" height="190">
-              <label>
+
+              <div>
                 <input type="checkbox" id="trameNoire" checked>
-                Trame Noire
-              </label>
-              <img src="./data/LegendeTrameNoire.png" alt="Votre image" width="95" height="50">
-              <label class="categoryLabel">Biodiversité</label>
-              <label>
+                <label for='tramNoire'>Trame noire</label>
+              </div>
+
+              <select id="type" class="btn btn-dark">
+                <option value="all" selected="selected">Trame noire complète</option>
+                <option value="type1">Zone urbaine éclairée</option>
+                <option value="type2">Zone d'obscurité partielle</option>
+                <option value="type3">Zone d'obscurité totale</option>
+              </select>
+
+              <div class="categoryLabel">
+                <p>Biodiversité</p>
+              </div>
+              <hr/>
+
+              <div>
                 <input type="checkbox" id="pnr">
-                Parc Naturel Regional 
-              </label>
-              <label>
+                <label for="pnr">Parc Naturel Regional</label>
+              </div>
+
+              <div>
                 <input type="checkbox" id="znieff">
-                ZNIEFF
-              </label>
-              <label class="categoryLabel">Administratif</label>
-              <label>
+                <label for="znieff">ZNIEFF</label>
+              </div>
+
+              <div class="categoryLabel">
+                <p>Administratif</p>
+              </div>
+              <hr/>
+
+              <div>
                 <input type="checkbox" id="comLigne" checked>
-                Communes 
-              </label>
+                <label for='comLigne'>Communes</label>
+              </div>
             </fieldset>
           </div>
         </div>
-        
+
         <!-- ongletsgeo -->
         <div id='ongletsgeo'>
-        
+
           <div class="btn-group-sm" role="group" aria-label="Small button group">
-          
+
             <button type="button" id="vuegloable" class="btn btn-primary">Vue Globale</button>
             <button type="button" id="bois" class="btn btn-dark">Bois de Lesvellec</button>
             <button type="button" id="etangs" class="btn btn-dark">Les Etangs</button>
@@ -132,10 +154,10 @@
         </div>
       </div>
 
-    <!-- load map -->
-    <script type="text/javascript" src="scripts/map.js"></script>
-    <script type="text/javascript" src="scripts/utils.js"></script>
-</body>
+      <!-- load map -->
+      <script type="text/javascript" src="scripts/map.js"></script>
+      <script type="text/javascript" src="scripts/utils.js"></script>
+  </body>
 </html>
 
 
