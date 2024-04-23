@@ -145,6 +145,7 @@ nav a:hover {
   width: inherit;
   padding: 1%;
   color: white;
+  overflow: auto;
 }
 
 #info-main p {
@@ -161,12 +162,12 @@ nav a:hover {
 
 #infos-pts p {
   margin-top: 1%;
-  font-size: 65%;
+  font-size: 75%;
 }
 
 #infos-pts h3 {
   margin-top: 3%;
-  font-size: 80%;
+  font-size: 100%;
   font-weight: bold;
 }
 
@@ -185,4 +186,26 @@ nav a:hover {
   right: 0.75%; 
   z-index: 10;
   margin-top: 1%;
+}
+
+/*********/
+/* popup */
+/*********/
+.maplibregl-popup {
+  width: 20%;
+  font-family: "Lato", sans-serif;
+}
+.maplibregl-popup h3 {
+  font-size: 135%;
+}
+.maplibregl-popup img {
+  max-width:100%;
+  max-height:100%;
+  object-fit: contain;
+}
+.maplibregl-popup-content p {
+  font-family: "Lato", sans-serif;
+  padding-top: 5%;
+  font-style: italic;
+  font-size: 90%;
 }
