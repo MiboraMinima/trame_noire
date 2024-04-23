@@ -84,7 +84,7 @@
         <div class="menu">
           <div class="menu_overlay">
             <fieldset>
-              <div class="categoryLabel">
+              <div class="categoryLabel" style="margin-top: 2%;">
                 <p>Trame noire</p>
               </div>
               <hr/>
@@ -96,10 +96,17 @@
 
               <div>
                 <input type="checkbox" id="avex">
-                <label for='avex'>Indice de luminosité (AVEX)</label>
+                <label for='avex'>Nombre d'étoiles visibles</label>
               </div>
 
-              <img src="./data/LegendeAvex2.png" alt="Votre image" width="110" height="190">
+              <div id="avex-legend">
+                <p style="color: magenta;">50-100</p>
+                <p style="color: red;">100-200</p>
+                <p style="color: orange;">200-250</p>
+                <p style="color: yellow;">250-500</p>
+                <p style="color: green;">500-1000</p>
+                <p style="color: cyan;">1000-1800</p>
+              </div>
 
               <div>
                 <input type="checkbox" id="trameNoire" checked>
@@ -125,7 +132,7 @@
 
               <div>
                 <input type="checkbox" id="znieff">
-                <label for="znieff">ZNIEFF</label>
+                <label for="znieff">ZNIEFF type I</label>
               </div>
 
               <div class="categoryLabel">
