@@ -209,3 +209,39 @@ nav a:hover {
   font-style: italic;
   font-size: 90%;
 }
+
+/*informations*/ 
+
+body {
+background-image: url('https://images.pexels.com/photos/1341279/pexels-photo-1341279.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  background-size: cover; 
+  color: white;
+  height: 100vh;
+  width: 100vw;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+}
+
+.grandtitre {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+.titrebis {
+            margin: 0 ;
+            padding: 5px;
+            padding-bottom: 20px;
+            text-align: center;
+        }
+
+p{text-align: center}
+
+ .blackcadre {
+            background-color: black;
+            width: 60%; /* Largeur du rectangle */
+            height: 95%; /* Hauteur du rectangle */
+            margin: 50px auto; /* Pour centrer verticalement */
+        }
+
