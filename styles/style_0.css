@@ -223,6 +223,7 @@ background-image: url('https://images.pexels.com/photos/1341279/pexels-photo-134
 }
 
 .grandtitre {
+	color :blue;
             width: 80%;
             margin: 0 auto;
             padding: 20px;
@@ -236,7 +237,7 @@ background-image: url('https://images.pexels.com/photos/1341279/pexels-photo-134
             text-align: center;
         }
 
-p{text-align: center;
+div.blackcadre p{text-align: justify;
   background-color: black;
   padding: 10px}
 
