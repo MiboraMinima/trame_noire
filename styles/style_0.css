@@ -248,3 +248,19 @@ div.blackcadre p{text-align: justify;
             margin: 50px auto; /* Pour centrer verticalement */
         }
 
+
+
+.texte {
+            width: 90%;
+            padding: 20px;
+          }
+
+
+.image {
+            height:40px; 
+            width:40px;
+        }
+
+p {
+        text-align: justify;
+    }
