@@ -256,7 +256,7 @@ div.blackcadre p{text-align: justify;
             background-color: black;
             width: 100%; /* Largeur du rectangle */
             height: 100%; /* Hauteur du rectangle */
-	    opacity: 0.7; /* Opacité */
+            opacity: 0.8; /* Opacité */
         }
 
 .titre {
