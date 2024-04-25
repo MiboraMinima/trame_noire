@@ -248,7 +248,11 @@ div.blackcadre p{text-align: justify;
             margin: 50px auto; /* Pour centrer verticalement */
         }
 
-
+.titre {
+            width: 80%;
+            padding: 20px;
+            color: #047fc5;
+        }
 
 .texte {
             width: 90%;
