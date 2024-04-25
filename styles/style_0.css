@@ -273,5 +273,5 @@ p {
             background-color: black;
             width: 70%; /* Largeur du rectangle */
             height: 100%; /* Hauteur du rectangle */
-	opacity: 0.7; /* Opacité */
+	    opacity: 0.7; /* Opacité */
         }
