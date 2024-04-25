@@ -264,3 +264,9 @@ div.blackcadre p{text-align: justify;
 p {
         text-align: justify;
     }
+
+.blackcadre {
+            background-color: black;
+            width: 50%; /* Largeur du rectangle */
+            height: 100%; /* Hauteur du rectangle */            
+        }
