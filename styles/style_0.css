@@ -236,7 +236,9 @@ background-image: url('https://images.pexels.com/photos/1341279/pexels-photo-134
             text-align: center;
         }
 
-p{text-align: center}
+p{text-align: center;
+  background-color: black;
+  padding: 10px}
 
  .blackcadre {
             background-color: black;
