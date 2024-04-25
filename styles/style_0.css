@@ -271,7 +271,7 @@ p {
 
 .blackcadre2 {
             background-color: black;
-            width: 70%; /* Largeur du rectangle */
+            width: 100%; /* Largeur du rectangle */
             height: 100%; /* Hauteur du rectangle */
 	    opacity: 0.7; /* Opacité */
         }
