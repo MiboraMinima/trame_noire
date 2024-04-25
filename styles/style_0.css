@@ -248,15 +248,6 @@ div.blackcadre p{text-align: justify;
             margin: 50px auto; /* Pour centrer verticalement */
         }
 
-body {
-background-image: url('https://images.pexels.com/photos/1341279/pexels-photo-1341279.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
-  background-size: cover; 
-  color: white;
-  height: 100%;
-  width: 100vw;
-  font-family: "Lato", sans-serif;
-  font-style: normal;
-}
 .titre {
             width: 80%;
             padding: 20px;
