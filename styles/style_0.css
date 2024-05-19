@@ -223,6 +223,7 @@ background-image: url('https://images.pexels.com/photos/1341279/pexels-photo-134
 }
 
 .grandtitre {
+	color : #047fc5;
             width: 80%;
             margin: 0 auto;
             padding: 20px;
@@ -236,7 +237,9 @@ background-image: url('https://images.pexels.com/photos/1341279/pexels-photo-134
             text-align: center;
         }
 
-p{text-align: center}
+div.blackcadre p{text-align: justify;
+  background-color: black;
+  padding: 10px}
 
  .blackcadre {
             background-color: black;
@@ -244,4 +247,37 @@ p{text-align: center}
             height: 95%; /* Hauteur du rectangle */
             margin: 50px auto; /* Pour centrer verticalement */
         }
+
+
+
+
+
+.blackcadre2 {
+            background-color: black;
+            width: 100%; /* Largeur du rectangle */
+            height: 100%; /* Hauteur du rectangle */
+            opacity: 0.8; /* Opacité */
+        }
+
+.titre {
+            width: 80%;
+            padding: 20px;
+            color: #047fc5;
+        }
+
+.texte {
+            width: 100%;
+            padding: 20px;
+          }
+
+
+.image {
+            height:50px; 
+            width:50px;
+        }
+
+p {
+        text-align: justify;
+    }
+
 
